@@ -29,65 +29,6 @@ function App() {
 		flexDirection: "column",
 	};
 
-
-	/*
-	  return (
-		<div style={appContainerStyle}>
-		  <div>
-			<SideNavBar></SideNavBar>
-		  </div>
-		  <div style={contentContainerStyle}>
-			<div class="desktop-1">
-			  <section class="dashboard-frame">
-				<div class="ubicacion-modulos-active-parent">
-				  <div class="ubicacion-modulos-active">
-					<div class="rectangle-parent">
-					  <div class="frame-child"></div>
-					  <b class="indice-uv">Indice UV</b>
-					  <div class="ellipse-frame">
-						<div class="historicos-text"></div>
-						<div class="graphline-frame">11.50</div>
-					  </div>
-					</div>
-					<div class="rectangle-group">
-					  <div class="frame-item"></div>
-					  <b class="ubicacin">Ubicación</b>
-					  <div class="loja-ecuador">
-						<img
-						  class="icon-map-marker"
-						  loading="eager"
-						  alt=""
-						  src="./public/-icon-map-marker.svg"
-						/>
-						<h3 class="loja-ecuador1">
-						  <span class="loja-ecuador-txt-container">
-							<p class="loja">Loja</p>
-							<p class="ecuador">Ecuador</p>
-						  </span>
-						</h3>
-					  </div>
-					</div>
-					<div class="rectangle-container">
-					  <div class="frame-inner"></div>
-					  <b class="mdulos-activos">Módulos activos</b>
-					  <div class="div">5</div>
-					</div>
-				  </div>
-				  <footer class="group-footer">
-					<div class="rectangle-div"></div>
-					<div class="recommendations-frame-parent">
-					  <RecommendationsCarousel/>
-					</div>
-				    
-	
-				  </footer>
-				</div>
-			  </section>
-			</div>
-		  </div>
-		</div>
-	  );
-	  */
 	return (
 		<div style={appContainerStyle} className="desktop-1">
 			<div>
@@ -96,7 +37,6 @@ function App() {
 			<div style={contentContainerStyle}>
 				{/*Primera parte*/}
 				<div style={{ flex: 1, display: "flex", justifyContent: "space-between", width: "100%", padding: "1% 2% 2% 0%", }}>
-
 					<div style={{ background: "rgba(255,255,255, 0.23)", width: "32%", borderRadius: "5%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", maxHeight: "450px" }}>
 						<h1>Indice UV</h1>
 						<div style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center" }}>
@@ -104,16 +44,15 @@ function App() {
 								series={[
 									{
 										data: [
-											{ id: 0, value: 15, color: 'red' },
+											{ id: 0, value: 8.5, color: 'red' },
 										],
-										innerRadius: 50,
-										outerRadius: 120,
+										innerRadius: 70,
+										outerRadius: 125,
 										paddingAngle: 5,
-										cornerRadius: 5,
-										startAngle: -90,
-										endAngle: 180,
+										cornerRadius: 20,
+										startAngle: 0,
+										endAngle: (360/15)*8.5,
 										cx: 150,
-
 									}]}
 								width={300} height={250} style={{ alignSelf: "center", justifySelf: "center" }}>
 								<PieCenterLabel>8.5</PieCenterLabel>
@@ -129,9 +68,9 @@ function App() {
 						<h1>Loja - Ecuador</h1>
 					</div>
 
-					<div style={{ background: "rgba(255,255,255, 0.23)", width: "32%", borderRadius: "5%", maxHeight: "450px"}}>
+					<div style={{ background: "rgba(255,255,255, 0.23)", width: "32%", borderRadius: "5%", maxHeight: "450px" }}>
 						<h1>Módulos activos</h1>
-						<h1 style={{fontSize: 200, position: "relative", top: "10%", left: "50%", transform: "translate(-50%, -50%)"}}>5</h1>
+						<h1 style={{ fontSize: 200, position: "relative", top: "10%", left: "50%", transform: "translate(-50%, -50%)" }}>5</h1>
 					</div>
 				</div>
 				<div style={{ flex: 1 }}>
@@ -140,9 +79,9 @@ function App() {
 						<RecommendationsCarousel />
 					</div>
 				</div>
-				
+
 			</div>
-			<Chatbot/>
+			<Chatbot />
 		</div>
 	);
 }
@@ -176,7 +115,7 @@ const RecommendationsCarousel = () => {
 		},
 		{
 			title: "Use gafas",
-			description: "Se recomienda el uso de gafas",
+			description: "Se recomienda el uso de gafas, para la protección de los ojos.",
 			icono: <GiSunglasses style={{ width: "100%", height: "100%" }} />
 		},
 	];
@@ -191,10 +130,10 @@ const RecommendationsCarousel = () => {
 	};
 
 	return (
-		<div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",height: "100%" }}>
-			<Slider {...settings} style={{ width: "90%", alignSelf: "center", justifySelf: "center", height: "100%"}}>
+		<div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "100%" }}>
+			<Slider {...settings} style={{ width: "90%", alignSelf: "center", justifySelf: "center", height: "100%" }}>
 				{recommendationsData.map((recommendation, index) => (
-					<div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",height: "100%",}}>
+					<div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "100%", }}>
 						<div key={index} style={{
 							display: "flex",
 							flexDirection: "row",
@@ -202,14 +141,14 @@ const RecommendationsCarousel = () => {
 							alignItems: "center",
 							padding: "1%",
 							borderRadius: "5px",
-							
+
 						}}>
-							<div style={{ flex: "0 0 auto", marginRight: "2%", height: "100%", width: "20%"}}>
+							<div style={{ flex: "0 0 auto", marginRight: "2%", height: "100%", width: "20%" }}>
 								{recommendation.icono}
 							</div>
-							<div style={{ flex: 1, paddingLeft: "10%", paddingRight: "10%"  }}>
-								<h1 style={{ margin: 0, fontSize:32, fontWeight: 900, paddingBottom: 30 }}>{recommendation.title}</h1>
-								<h2 style={{ margin: 0, fontSize:30, fontWeight: 400 }}>{recommendation.description}</h2>
+							<div style={{ flex: 1, paddingLeft: "10%", paddingRight: "10%" }}>
+								<h1 style={{ margin: 0, fontSize: 32, fontWeight: 900, paddingBottom: 30 }}>{recommendation.title}</h1>
+								<h2 style={{ margin: 0, fontSize: 30, fontWeight: 400 }}>{recommendation.description}</h2>
 							</div>
 						</div>
 					</div>
@@ -220,7 +159,5 @@ const RecommendationsCarousel = () => {
 	);
 
 };
-
-
 
 export default App;
