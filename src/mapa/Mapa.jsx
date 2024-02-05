@@ -26,6 +26,7 @@ const Mapa = () => {
             8.45 uv
           </Popup>
         </Marker>
+        
       </MapContainer>
       
     </div>
