@@ -150,7 +150,7 @@ function Chatbot() {
       recognitionEnable={true}
       floating={true}
       headerTitle="Asistente de Radiación UV"
-      botDelay={100}
+      botDelay={10}
       //speechSynthesis={{ enable: true, lang: 'en' }}
       reconocimientoLang="es"
       width="450px"
@@ -167,7 +167,12 @@ const LexicalValidation = ({ steps, triggerNextStep }) => {
   }
 
   const questionAnswerDictionary = {
+    'qué es la radiacion uv':'La radiación ultravioleta (UV) es una forma de radiación no ionizante* que es emitida por el sol y fuentes artificiales, como las camas bronceadoras. Aunque ofrece algunos beneficios a las personas, como la producción de vitamina D, también puede causar riesgos para la salud.',
+    'qué daños puede producir la radiación uv':'Los efectos agudos de la radiación ultravioleta pueden ser: daños en el ADN, quemaduras solares, reacciones fototóxicas y fotoalérgicas e inmunodepresión, que puede considerarse un factor de riesgo de cáncer y dar lugar a la reactivación de virus.',
+    'como se mide la radiación uv':'El índice UV se mide en una escala (0 a 15 en el caso de la aplicación). Los números se correlacionan con la fuerza del sol, subiendo a medida que aumentan los rayos que dañan la piel.',
+    'donde se encuntran los sensores, modulos, dispositivos de medición':'Actualmente los modulos se encuentran únicamente en la ciudad de Loja, en las facultades de la Universidad Nacional de Loja',
     'cuál es el procedimiento para consultar los niveles de radiación uv a través de la api?':'Para consultar los niveles de radiación UV, debes acceder a nuestro Dashboard en donde encontrarás los diferentes sensores de medición con sus respectivos niveles y recomendaciones sobre la radiación UV y recomendaciones.',
+    'cómo acceder a la información de la api':'Para acceder a la información proporcionada por la API de medición de radiación UV, puedes utilizar las funcionalidades integradas en nuestra página web y aplicación móvil, ademása la API está diseñada para ser accesible a través de consultas específicas que puedes realizar desde cualquier software que la implemente.',
     'qué parámetros debo incluir en mi solicitud a la api para obtener datos precisos sobre la radiación uv': 'Los parámetros que debes incluir en tu solicitud a la API para obtener datos precisos sobre la radiación UV incluyen datos de registro (nombres completos, cedula, celular, correo electrónico) y la razón por la cual deseas hacer el consumo de la API.',
     'la api proporciona datos históricos de radiación uv? ¿cómo puedo acceder a ellos':'Sí, la App proporciona datos históricos de radiación UV de forma diaria, semanal y mensual mediante el uso de un gráfico.Para acceder a ella debes estar previamente logeado con tu cuenta de usuario,y luego dirigirte a la sección datos historicos',
     'puedo integrar los datos de la api en mi propio software o aplicación':'Sí, puedes integrar los datos de la API en tu propio software o aplicación. La API está diseñada para ser compatible con diversas plataformas y sistemas, lo que facilita su integración en aplicaciones personalizadas.',
@@ -180,7 +185,7 @@ const LexicalValidation = ({ steps, triggerNextStep }) => {
   const formattedUserMessage = userMessage.toLowerCase();
   const { bestMatch } = findBestMatch(formattedUserMessage, Object.keys(questionAnswerDictionary).map(question => question.toLowerCase()));
 
-  const similarityThreshold = 0.3;
+  const similarityThreshold = 0.4;
   const isValid = bestMatch.rating >= similarityThreshold;
 
   console.log('Best match:', bestMatch, isValid, userMessage);
