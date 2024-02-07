@@ -21,6 +21,7 @@ function Solicitudes() {
             <div>
                 <SideNavBar></SideNavBar>
             </div>
+            <Chatbot/>
         </div>
     );
 }
