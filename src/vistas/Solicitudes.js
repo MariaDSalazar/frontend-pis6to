@@ -63,7 +63,7 @@ function Solicitudes() {
                                 </div>
                             </div>
                             <div style={{ background: "rgba(255,255,255, 0.23)", borderRadius: "20px", padding: "2%", display: "flex", flexDirection: "column", margin: "5%"  }}>
-                                <h4 style={{ textAlign: "center", }}>Juan CUeva</h4>
+                                <h4 style={{ textAlign: "center", }}>Juan Cueva</h4>
                                 <a style={{ textAlign: "left", fontWeight: "400", fontSize: "20px", }}>Juan</a>
                                 <a style={{ textAlign: "left", fontWeight: "400", fontSize: "20px" }}>juean.unl.edu.ec</a>
                                 <a style={{ textAlign: "left", fontWeight: "400", fontSize: "20px" }}>15 años</a>
