@@ -141,7 +141,6 @@ const RecommendationsCarousel = () => {
 							alignItems: "center",
 							padding: "1%",
 							borderRadius: "5px",
-
 						}}>
 							<div style={{ flex: "0 0 auto", marginRight: "2%", height: "100%", width: "20%" }}>
 								{recommendation.icono}

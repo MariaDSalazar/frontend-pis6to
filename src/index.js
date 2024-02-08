@@ -8,6 +8,7 @@ import reportWebVitals from './reportWebVitals';
 import Modulos from './vistas/Modulos';
 import Historicos from './vistas/Historicos';
 import Solicitudes from './vistas/Solicitudes';
+import RestApi from './vistas/RestApi';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -17,6 +18,7 @@ ReactDOM.render(
         <Route path="/modulos" element={<Modulos />} />
         <Route path="/historicos" element={<Historicos />} />
         <Route path="/solicitudes" element={<Solicitudes />} />
+        <Route path="/api" element={<RestApi />} />
 
         {/* Ruta de redirección para rutas no coincidentes */}
         <Route path="*" element={<Navigate to="/dashboard" />} />
