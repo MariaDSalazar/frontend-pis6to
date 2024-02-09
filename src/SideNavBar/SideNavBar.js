@@ -31,7 +31,7 @@ const SideNavBar = () => {
         <div className="nav-heading">
           {isExpanded && (
             <div className="nav-brand">
-              <img src="logo2.svg" style={{ width: "75px", height: "100px" }} alt="" />
+              <img src="logo2.svg" style={{ width: "75px", height: "100px" }} alt="Aqui va el logo" />
               <h3>Radiación UV</h3>
             </div>
           )}

@@ -10,6 +10,7 @@ import Historicos from './vistas/Historicos';
 import Login from './vistas/Login';
 import Registrar from './vistas/Registrar';
 import Solicitudes from './vistas/Solicitudes';
+import RestApi from './vistas/RestApi';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -21,6 +22,7 @@ ReactDOM.render(
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Registrar />} />
         <Route path="/solicitudes" element={<Solicitudes />} />
+        <Route path="/api" element={<RestApi />} />
 
         {/* Ruta de redirección para rutas no coincidentes */}
         <Route path="*" element={<Navigate to="/dashboard" />} />

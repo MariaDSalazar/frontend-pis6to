@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import SideNavBar from "./SideNavBar/SideNavBar";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -12,6 +12,34 @@ import { GiSunglasses } from "react-icons/gi";
 import Chatbot from "./chatbot/Chatbot";
 
 function App() {
+
+	const [uvIndex, setUvIndex] = useState(null);
+	const [dActivos, setDActivos] = useState(0);
+
+	useEffect(() => {
+		// Realiza la petición al backend para obtener el índice UV
+		fetch('https://computacion.unl.edu.ec/uv/api/medicionPromedio')
+		  .then(response => response.json())
+		  .then(data => {
+			// Actualiza el estado con el valor obtenido del backend
+			console.log('El índice UV es:', data.promedioUltimasMediciones.promedio);
+			setUvIndex(data.promedioUltimasMediciones.promedio);
+		  })
+		  .catch(error => {
+			console.error('Error al obtener el índice UV:', error);
+		  });
+		
+		  fetch('https://computacion.unl.edu.ec/uv/api/activos')
+		  .then(response => response.json())
+		  .then(data => {
+			// Actualiza el estado con el valor obtenido del backend
+			setDActivos(data.dispositivos.length);
+		  })
+		  .catch(error => {
+			console.error('Error al obtener el índice UV:', error);
+		  });
+	  }, []);
+
 	const appContainerStyle = {
 		display: "flex",
 		width: "100%", // Asegúrate de que ocupe todo el ancho
@@ -44,18 +72,18 @@ function App() {
 								series={[
 									{
 										data: [
-											{ id: 0, value: 8.5, color: 'red' },
+											{ id: 0, value: uvIndex, color: 'green' },
 										],
 										innerRadius: 70,
 										outerRadius: 125,
 										paddingAngle: 5,
 										cornerRadius: 20,
 										startAngle: 0,
-										endAngle: (360/15)*8.5,
+										endAngle: (360/15)*uvIndex,
 										cx: 150,
 									}]}
 								width={300} height={250} style={{ alignSelf: "center", justifySelf: "center" }}>
-								<PieCenterLabel>8.5</PieCenterLabel>
+								<PieCenterLabel>{uvIndex}</PieCenterLabel>
 							</PieChart>
 
 						</div>
@@ -70,7 +98,7 @@ function App() {
 
 					<div style={{ background: "rgba(255,255,255, 0.23)", width: "32%", borderRadius: "5%", maxHeight: "450px" }}>
 						<h1>Módulos activos</h1>
-						<h1 style={{ fontSize: 200, position: "relative", top: "10%", left: "50%", transform: "translate(-50%, -50%)" }}>5</h1>
+						<h1 style={{ fontSize: 200, position: "relative", top: "10%", left: "50%", transform: "translate(-50%, -50%)" }}>{dActivos}</h1>
 					</div>
 				</div>
 				<div style={{ flex: 1 }}>
@@ -141,7 +169,6 @@ const RecommendationsCarousel = () => {
 							alignItems: "center",
 							padding: "1%",
 							borderRadius: "5px",
-
 						}}>
 							<div style={{ flex: "0 0 auto", marginRight: "2%", height: "100%", width: "20%" }}>
 								{recommendation.icono}
