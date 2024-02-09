@@ -40,7 +40,7 @@ const Mapa = () => {
               <br />
               {dispositivo.uv ? `${dispositivo.uv} uv` : 'Información no disponible'}
             </Popup>
-          </Marker>
+          </Marker> 
         ))}
       </MapContainer>
     </div>
